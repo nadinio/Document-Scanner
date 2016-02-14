@@ -18,28 +18,40 @@ class DataMatrix {
     }
 
 
-    public void scanDocuments() {
-        String scannedText = "";
-
+    private void scanDocuments() {
+        String scannedText;
 
         for (int i = 0; i < args.length; i++)
             try {
-                scannedText = scannedText + new String(Files.readAllBytes(Paths.get(args[i])), StandardCharsets.UTF_8);
+                scannedText = new String(Files.readAllBytes(Paths.get(args[i])), StandardCharsets.UTF_8);
+                String[] stringArray = scannedText.replaceAll("[-\",.:'%]", "").toLowerCase().split("\\s+");
+                for(int j = 0; j < stringArray.length; j++)
+                {
+                    addWord(stringArray[j]);
+                    incrementWord(stringArray[j], i);
+                }
             } catch (Exception ex) {
                 System.out.println("File not found.");
             }
 
-        // System.out.print(scannedText);
 
     }
 
-    public void addWord(String word)
+    private void addWord(String word)
     {
-        Integer[] array = new Integer[documentCount];
+        if(!dataMatrix.containsKey(word)) {
+            Integer[] array = new Integer[documentCount];
 
-        for(int i = 0; i < documentCount; i++)
-            array[i] = 0;
+            for (int i = 0; i < documentCount; i++)
+                array[i] = 0;
 
-        dataMatrix.put(word, array);
+            dataMatrix.put(word, array);
+        }
+    }
+
+    private void incrementWord(String word, int documentNumber)
+    {
+        Integer[] array = dataMatrix.get(word);
+        array[documentNumber] = array[documentNumber] + 1;
     }
 }

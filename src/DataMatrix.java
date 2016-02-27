@@ -4,7 +4,6 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -34,11 +33,13 @@ class DataMatrix {
         for (int i = 0; i < args.length; i++)
             try {
                 scannedText = new String(Files.readAllBytes(Paths.get(args[i])), StandardCharsets.UTF_8);
-                String[] stringArray = scannedText.replaceAll("[-\",.:'%]", "").toLowerCase().split("\\s+");
+                String[] stringArray = scannedText.replaceAll("[-$\",;@).?:'%(]", " ").toLowerCase().split("\\s+");
                 for(int j = 0; j < stringArray.length; j++)
                 {
-                    addWord(stringArray[j]);
-                    incrementWord(stringArray[j], i);
+                    if(!isNumeric(stringArray[j]) && stringArray[j].length() > 1) {
+                        addWord(stringArray[j]);
+                        incrementWord(stringArray[j], i);
+                    }
                 }
             } catch (Exception ex) {
                 System.out.println("File not found.");
@@ -92,5 +93,17 @@ class DataMatrix {
 
         wb.write(fileOut);
         fileOut.close();
+    }
+
+    public boolean isNumeric(String toTest)
+    {
+        try{
+            Integer.parseInt(toTest);
+            return true;
+
+        }catch (NumberFormatException ex)
+        {
+            return false;
+        }
     }
 }

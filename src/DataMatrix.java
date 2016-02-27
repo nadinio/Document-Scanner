@@ -33,7 +33,7 @@ class DataMatrix {
         for (int i = 0; i < args.length; i++)
             try {
                 scannedText = new String(Files.readAllBytes(Paths.get(args[i])), StandardCharsets.UTF_8);
-                String[] stringArray = scannedText.replaceAll("[-$\",;@).?:'%(]", " ").toLowerCase().split("\\s+");
+                String[] stringArray = scannedText.replaceAll("[-$\",\\];\\[@).?#:!'%(]", " ").toLowerCase().split("\\s+");
                 for(int j = 0; j < stringArray.length; j++)
                 {
                     if(!isNumeric(stringArray[j]) && stringArray[j].length() > 1) {

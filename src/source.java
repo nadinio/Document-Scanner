@@ -16,7 +16,7 @@ public class source {
             dataMatrix.exportToExcel();
         }catch(Exception ex)
         {
-            System.out.println("Could not export the data matrix");
+            System.out.println("Could not export the data matrix. Make sure workbook.xls is closed.");
         }
 
 

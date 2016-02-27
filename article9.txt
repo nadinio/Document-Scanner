@@ -1,0 +1,33 @@
+Here's what it would cost Apple to help the FBI hack an iPhone
+
+
+
+It would cost Apple about $101,000 in labor costs to help the FBI hack an iPhone -- although the company would likely spend millions more to prevent this hack from dangerously leaking into the open.
+In court documents filed on Thursday, Apple revealed what it would take to create a back door into one of its iPhones. A federal magistrate-judge has ordered the company to create code that will help the FBI break into the iPhone 5C of a San Bernardino shooter.
+Apple is fighting the order, but it has estimated the effort it would take to build a new version of its operating system, which an Apple employee has dubbed "GovtOS."
+"All told, I would estimate that the process of designing, creating, validating, deploying GovtOS would take two to four weeks," Apple's manager of user privacy, Erik Neuenschwander, declared in a court papers.
+The effort would take "six to ten Apple engineers and employees dedicating a very substantial portion of their time," Apple said in a court filing.
+That would include the rock star engineers from Apple's core operating system group, one quality assurance engineer, a project manager, and a document writer, according to Apple's filing.
+Here's the potential cost, using salaries from salary-tracking website Glassdoor.
+First, here are the salaries we used:
+Average "senior software engineer" at Apple: $147,049.
+Average project manager at Apple: $108,059.
+Average software quality assurance engineer at Apple: $102,857.
+Document writers at Apple weren't listed on Glassdoor, but the average "technical writer" makes $71,950, according to the Bureau of Labor Statistics.
+Now consider how many of those workers Apple would need: Assuming Apple's maximum estimate is right, this would take seven software engineers and three other employees. They'd work four weeks, full-time.
+This nightmare dream team of employees working full-time to create a big back door -- something CEO Tim Cook calls a "cancer" -- would only cost the company $100,939.
+CNNMoney shared its estimate with Apple (AAPL, Tech30), but the company declined to comment.
+Even if those software engineers were some of the highest-paid ones at Apple, the whole hacking project would still cost less than $200,000 -- an infinitesimal blip for a company with $216 billion in cash.
+Then again, Apple does say that the team effort is only an estimate.
+"It has never been done before," the company said in its court filing Thursday. "No operating system currently exists that can accomplish what the government wants, and any effort to create one will require that Apple write new code, not just disable existing code functionality."
+But wait, there's more
+Apple makes clear that creating this "cancerous" code poses a huge risk for the company.
+To keep this hack from ever leaving Apple's premises, Apple would probably house its "hacking department" in a new, highly-fortified containment lab. In a court declaration, Apple lawyer Lisa Olle said the company would "likely" build "one or two secure facilities" similar to a "Sensitive Compartmented Information Facility."
+Think: top-secret CIA compound.
+Apple didn't provide any cost estimates, so CNNMoney consulted with licensed experts who build SCIFs. They said it would cost $25 million to build a new one. For two? That's $50 million.
+The company says it would also spend "additional time" destroying every line of code in GovtOS -- and closely guarding any logs that led to its creation. Apple didn't provide any estimates in its court filing.
+But it's not just about dollars and cents -- especially when the U.S. government has already offered to reimburse Apple for every penny spent.
+The major question is whether this would be a one-time effort for the FBI -- or, as Apple claims, new legal precedent that would trigger requests from law enforcement agencies all over the country.
+Indeed, Manhattan District Attorney Cyrus Vance has said there are 175 criminal cases in which he would want to force Apple to help investigators unlock an iPhone as well.
+In court documents, Apple says "the burden will multiply" if it has to destroy this malicious code and recreate it every time there's a request.
+But this is a pithy numbers exercise. Apple's really fighting this case on civil rights grounds. It claims the government can't be "conscripted... to do the government's bidding" and make everyone's iPhone "crippled and insecure."

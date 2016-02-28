@@ -16,9 +16,10 @@ import java.util.Map;
  * Created by Nicholas on 2/14/2016.
  */
 class DataMatrix {
-    private int documentCount = 0;
+    int documentCount = 0;
     static String[] args;
     HashMap<String, Integer[]> dataMatrix = new HashMap<>();
+    double[][] distanceArray = new double[10][10];
 
     DataMatrix(String[] args) {
         documentCount = args.length;
@@ -95,7 +96,25 @@ class DataMatrix {
         fileOut.close();
     }
 
-    public boolean isNumeric(String toTest)
+    public void calcEuclidDistance()
+    {
+        for (int i = 0; i < documentCount-1; i++)
+            for (int j = 0; j < documentCount-1; j++)
+            {
+                double summation = 0;
+
+                for(Map.Entry<String, Integer[]> entry : dataMatrix.entrySet())
+                {
+                    Integer[] array = entry.getValue();
+
+                    summation = summation + Math.pow((array[i] - array[j]), 2);
+                }
+                distanceArray[i][j] = Math.pow(summation, .5);
+            }
+
+    }
+
+    private boolean isNumeric(String toTest)
     {
         try{
             Integer.parseInt(toTest);

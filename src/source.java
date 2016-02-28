@@ -10,10 +10,11 @@ public class source {
     public static void main(String[] args)
     {
         DataMatrix dataMatrix = new DataMatrix(args);
+        dataMatrix.calcEuclidDistance();
 
         try
         {
-            dataMatrix.exportToExcel();
+s            dataMatrix.exportToExcel();
         }catch(Exception ex)
         {
             System.out.println("Could not export the data matrix. Make sure workbook.xls is closed.");

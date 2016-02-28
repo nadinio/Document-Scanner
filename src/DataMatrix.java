@@ -98,8 +98,8 @@ class DataMatrix {
 
     public void calcEuclidDistance()
     {
-        for (int i = 0; i < documentCount-1; i++)
-            for (int j = 0; j < documentCount-1; j++)
+        for (int i = 0; i < documentCount; i++)
+            for (int j = 0; j < documentCount; j++)
             {
                 double summation = 0;
 
@@ -109,9 +109,76 @@ class DataMatrix {
 
                     summation = summation + Math.pow((array[i] - array[j]), 2);
                 }
-                distanceArray[i][j] = Math.pow(summation, .5);
+                distanceArray[i][j] = 1 / (1 + (Math.pow(summation, .5)));
             }
 
+    }
+
+    public void calcJaccardDistance()
+    {
+        for (int i = 0; i < documentCount; i++)
+            for (int j = 0; j < documentCount; j++)
+            {
+                double minSummation = 0;
+                double maxSummation = 0;
+
+                for(Map.Entry<String, Integer[]> entry : dataMatrix.entrySet())
+                {
+                    Integer[] array = entry.getValue();
+
+                    minSummation = minSummation + Math.min(array[i], array[j]);
+                    maxSummation = maxSummation + Math.max(array[i], array[j]);
+                }
+                distanceArray[i][j] = 1 - (minSummation/maxSummation);
+            }
+
+    }
+
+    public void calcCosineDistance()
+    {
+        for (int i = 0; i < documentCount; i++)
+            for (int j = 0; j < documentCount; j++)
+            {
+                double productSummation = 0;
+                double firstSummation = 0;
+                double secondSummation = 0;
+
+                for(Map.Entry<String, Integer[]> entry : dataMatrix.entrySet())
+                {
+                    Integer[] array = entry.getValue();
+
+                    productSummation = productSummation + array[i] * array[j];
+                    firstSummation = firstSummation + Math.pow(array[i], 2);
+                    secondSummation = secondSummation + Math.pow(array[j], 2);
+
+                }
+                distanceArray[i][j] = productSummation / Math.pow(firstSummation, .5) * Math.pow(secondSummation, .5);
+            }
+
+    }
+
+    public void exportDistanceArray(String fileName) throws IOException
+    {
+        Workbook wb = new HSSFWorkbook();
+        FileOutputStream fileOut = new FileOutputStream(fileName);
+        Sheet sheet = wb.createSheet("Sheet1");
+        int rowCount = 0;
+
+        for(int i = 0; i < distanceArray.length; i++) {
+
+            Row row = sheet.createRow(rowCount);
+
+            for (int j = 0; j < distanceArray[i].length; j++)
+            {
+                row.createCell(j).setCellValue(distanceArray[i][j]);
+            }
+            rowCount++;
+        }
+
+
+
+        wb.write(fileOut);
+        fileOut.close();
     }
 
     private boolean isNumeric(String toTest)

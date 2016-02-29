@@ -119,17 +119,24 @@ class DataMatrix {
         for (int i = 0; i < documentCount; i++)
             for (int j = 0; j < documentCount; j++)
             {
-                double minSummation = 0;
-                double maxSummation = 0;
+                double f01 = 0;
+                double f10 = 0;
+                double f11 = 0;
 
                 for(Map.Entry<String, Integer[]> entry : dataMatrix.entrySet())
                 {
                     Integer[] array = entry.getValue();
 
-                    minSummation = minSummation + Math.min(array[i], array[j]);
-                    maxSummation = maxSummation + Math.max(array[i], array[j]);
+                    if(array[i] >= 1 && array[j] >= 1)
+                        f11++;
+                    else if (array[i] >= 1 && array[j] == 0)
+                        f10++;
+                    else if (array[i] >= 0 && array[j] == 1)
+                        f01++;
+
+
                 }
-                distanceArray[i][j] = 1 - (minSummation/maxSummation);
+                distanceArray[i][j] = f11 / (f01 + f10 + f11);
             }
 
     }
@@ -147,12 +154,12 @@ class DataMatrix {
                 {
                     Integer[] array = entry.getValue();
 
-                    productSummation = productSummation + array[i] * array[j];
+                    productSummation = productSummation + (array[i] * array[j]);
                     firstSummation = firstSummation + Math.pow(array[i], 2);
                     secondSummation = secondSummation + Math.pow(array[j], 2);
 
                 }
-                distanceArray[i][j] = productSummation / Math.pow(firstSummation, .5) * Math.pow(secondSummation, .5);
+                distanceArray[i][j] = productSummation / (Math.pow(firstSummation, .5) * Math.pow(secondSummation, .5));
             }
 
     }
